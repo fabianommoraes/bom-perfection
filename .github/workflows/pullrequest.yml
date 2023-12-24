@@ -33,8 +33,10 @@ jobs:
       - name: Cypress
         uses: cypress-io/github-action@v6
         with:
+          browser: chrome
           build: npm run build
-          start: npm start       
+          start: npm start     
+          wait-on: "http://localhost:3000"  
   deploy:
     needs: e2e
     runs-on: ubuntu-latest
