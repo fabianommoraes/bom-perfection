@@ -1,5 +1,4 @@
-{
-    "monsters": [
+ [
         {
             "id": "monster-1",
             "name": "Dead Unicorn",
@@ -51,4 +50,3 @@
             "imageUrl": "https://fsl-assessment-public-files.s3.amazonaws.com/assessment-cc-01/angry-snake.png"
         }
     ]
-}
