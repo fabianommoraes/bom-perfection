@@ -1,4 +1,4 @@
-export const hostname = "http://localhost:3001";
+export const hostname = "http://localhost:3000";
 export const battleUrl = "/battle";
 export const monstersUrl = "/monsters";
 
