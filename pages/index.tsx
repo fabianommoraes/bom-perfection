@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
       <main>
         <BattleOfMonsters />
-        {/* kkkkkkk */}
+        {/* kkkkkksdfsdfdsk */}
       </main>
     </>
   );
