@@ -1,4 +1,4 @@
-export const hostname = "http://localhost:3000";
+export const hostname = "http://localhost:3000/api/hello";
 export const battleUrl = "/battle";
 export const monstersUrl = "/monsters";
 
@@ -10,7 +10,7 @@ export const battle = async (monster1Id: string, monster2Id: string) => {
     monster2Id
   };
 
-  const response = await fetch(`${hostname}${battleUrl}`, {
+  const response = await fetch(`${hostname}`, {
     method: "POST",
     body: JSON.stringify(body),
     headers: headers
@@ -20,7 +20,7 @@ export const battle = async (monster1Id: string, monster2Id: string) => {
 };
 
 export const requestMonstersData = async () => {
-  const response = await fetch(`${hostname}${monstersUrl}`);
+  const response = await fetch(`${hostname}`);
   const data = await response.json();
   return data;
 };
