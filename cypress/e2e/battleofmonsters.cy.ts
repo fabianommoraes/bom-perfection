@@ -29,3 +29,5 @@ describe("Battle of Monsters E2E tests", () => {
     cy.get("[data-testid='cypress-winner']").should("exist").contains("wins!");
   });
 });
+
+export {}
