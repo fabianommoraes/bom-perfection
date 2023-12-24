@@ -3,7 +3,8 @@ import { promises as fs } from 'fs';
 
 
 
-
+const data = await fs.readFile(process.cwd() + '/pages/api/monsters.json', 'utf8');
+const jsondata = JSON.parse(data)
 
 export default async function handler(
   req,
@@ -19,8 +20,8 @@ export default async function handler(
     return res.status(400).json({ message: 'Missing ID' });
   }
 
-  const monster1 = data.monsters.find((monster) => monster.id === monster1Id);
-  const monster2 = data.monsters.find((monster) => monster.id === monster2Id);
+  const monster1 = jsondata.find((monster) => monster.id === monster1Id);
+  const monster2 = jsondata.find((monster) => monster.id === monster2Id);
 
   if (!monster1 || !monster2) {
     return res.status(400).json({ message: 'Invalid ID' });
@@ -46,10 +47,8 @@ export default async function handler(
 
   if(req.method === 'GET') {
     try {
-      const file_data = await fs.readFile(process.cwd() + '/pages/api/monsters.json', 'utf8');
-      const json_data = JSON.parse(file_data)
-      // Do stuff
-      res.status(200).json(json_data)
+   
+      res.status(200).json(jsondata)
     }
     catch (error) {
       console.log(error)
