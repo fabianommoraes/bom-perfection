@@ -1,11 +1,8 @@
 {
   "compilerOptions": {
+    "types": ["@testing-library/jest-dom"],
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,9 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     },
     "forceConsistentCasingInFileNames": true
   },
@@ -31,8 +26,13 @@
     "shared/withRedux.js",
     "shared/test-utils.jsx",
     "components/ListOfMonsters/RadioGroup.js"
-, "pages/api/battle.js", "pages/api/hello.jw"  ],
+  ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "cypress",
+    "cypress.config.ts",
+    "**/*.cy.jsx",
+    "/cypress.config.ts",
+    "./cypress.config.ts"
   ]
 }
