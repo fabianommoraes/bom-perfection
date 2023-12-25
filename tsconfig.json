@@ -31,7 +31,7 @@
     "shared/withRedux.js",
     "shared/test-utils.jsx",
     "components/ListOfMonsters/RadioGroup.js"
-, "pages/api/hello.js"  ],
+, "pages/api/battle.js", "pages/api/hello.jw"  ],
   "exclude": [
     "node_modules"
   ]
