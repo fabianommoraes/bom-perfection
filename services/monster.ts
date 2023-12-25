@@ -15,12 +15,20 @@ export const battle = async (monster1Id: string, monster2Id: string) => {
     body: JSON.stringify(body),
     headers: headers
   });
+
   const data = await response.json();
-  return data;
+
+  return {
+    status: response.status,
+    data
+  };
 };
 
 export const requestMonstersData = async () => {
   const response = await fetch(`${hostname}${monstersUrl}`);
   const data = await response.json();
-  return data;
+  return {
+    status: response.status,
+    data
+  };
 };

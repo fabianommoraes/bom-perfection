@@ -9,32 +9,37 @@ import {
   setWinnerName,
   getWinnerName,
   setIsLoading,
-  getMonsterList
+  getMonsterList,
+  getWinnerError,
+  setWinnerError
 } from "../../redux/monstersSlice";
 import { useDispatch } from "react-redux";
 import { battle } from "../../services/monster";
 import { MonsterData } from "@/shared/types";
-import { useState } from "react";
 
 const BattleArena = () => {
   const selectedMonsterId = useSelector(getSelectedMonsterId);
   const computerMonsterId = useSelector(getComputerMonsterId);
   const monsterList: MonsterData[] = useSelector(getMonsterList);
   const winnerName = useSelector(getWinnerName);
-  const dispatch = useDispatch();
+  const winnerError = useSelector(getWinnerError);
 
-  const [error, setError] = useState(false);
+  const dispatch = useDispatch();
 
   const onClickStartBattle = async () => {
     dispatch(setIsLoading(true));
     dispatch(setWinnerName(""));
 
     setTimeout(async () => {
-      try {
-        const data = await battle(selectedMonsterId, computerMonsterId);
+      const { status, data } = await battle(
+        selectedMonsterId,
+        computerMonsterId
+      );
+
+      if (status === 200) {
         dispatch(setWinnerName(data.winner.name));
-      } catch (error) {
-        setError(true);
+      } else {
+        dispatch(setWinnerError(true));
       }
 
       dispatch(setIsLoading(false));
@@ -43,7 +48,7 @@ const BattleArena = () => {
 
   return (
     <Box>
-      {error ? (
+      {winnerError ? (
         <Alert
           severity="error"
           sx={{

@@ -32,4 +32,27 @@ describe("BattleArena tests", () => {
       expect(radioMonsters).toHaveLength(MockData.length);
     });
   });
+
+  it("should render the fetch error", async () => {
+    fetchMock.mockResponse(JSON.stringify({}), {
+      status: 400
+    });
+    render(<BattleOfMonsters />, {
+      preloadedState: {
+        monsters: {
+          monsterList: [],
+          selectedMonsterId: "",
+          computerMonsterId: "",
+          winnerName: "",
+          isLoading: false
+        }
+      }
+    });
+
+    await waitFor(() => {
+      expect(fetchMock.mock.calls.length).toEqual(1);
+      const error = screen.getByText(/Error/i);
+      expect(error).toBeInTheDocument();
+    });
+  });
 });

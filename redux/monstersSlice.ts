@@ -8,6 +8,8 @@ export interface BattleOfMonstersState {
   computerMonsterId: string;
   winnerName: string;
   isLoading: boolean;
+  winnerError: boolean;
+  fetchError: boolean;
 }
 
 const initialState: BattleOfMonstersState = {
@@ -15,7 +17,9 @@ const initialState: BattleOfMonstersState = {
   selectedMonsterId: "",
   computerMonsterId: "",
   winnerName: "",
-  isLoading: false
+  isLoading: false,
+  winnerError: false,
+  fetchError: false
 };
 
 export const monsterSliceReducers = {
@@ -42,6 +46,12 @@ export const monsterSliceReducers = {
   },
   setIsLoading(state: { isLoading: boolean }, action: { payload: any }) {
     state.isLoading = action.payload;
+  },
+  setWinnerError(state: { winnerError: boolean }, action: { payload: any }) {
+    state.winnerError = action.payload;
+  },
+  setFetchError(state: { fetchError: boolean }, action: { payload: any }) {
+    state.fetchError = action.payload;
   }
 };
 
@@ -56,7 +66,9 @@ export const {
   setSelectedMonsterId,
   setComputerMonsterId,
   setWinnerName,
-  setIsLoading
+  setIsLoading,
+  setWinnerError,
+  setFetchError
 } = monsterSlice.actions;
 
 export const getMonsterList = (state: AppState) => state.monsters.monsterList;
@@ -66,5 +78,7 @@ export const getComputerMonsterId = (state: AppState) =>
   state.monsters.computerMonsterId;
 export const getWinnerName = (state: AppState) => state.monsters.winnerName;
 export const getIsLoading = (state: AppState) => state.monsters.isLoading;
+export const getWinnerError = (state: AppState) => state.monsters.winnerError;
+export const getFetchError = (state: AppState) => state.monsters.fetchError;
 
 export default monsterSlice.reducer;
