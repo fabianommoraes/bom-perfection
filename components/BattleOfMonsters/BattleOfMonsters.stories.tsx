@@ -56,7 +56,8 @@ GetError.parameters = {
           url: `${hostname}${monstersUrl}`
         },
         response: {
-          status: 400
+          status: 400,
+          body: {}
         }
       }
     ]
@@ -84,7 +85,8 @@ PostError.parameters = {
           url: `${hostname}${battleUrl}`
         },
         response: {
-          status: 400
+          status: 400,
+          body: {}
         }
       }
     ]
